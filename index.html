@@ -5,13 +5,14 @@
   <!-- ✅ Meta essentials -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <title>Crypto Forensics & Asset Tracing | BlackThorn Advisory</title>
   <meta name="description" content="Precision crypto forensics for HNW clients, law firms and institutions: asset tracing & recovery, compliance reviews, market surveillance.">
   <link rel="canonical" href="https://blackthorn-investigations.com/" />
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <meta name="theme-color" content="#0e0e0e">
-
+  <!-- Public key hint -->
+  <link rel="pgpkey" href="/pgp/blackthorn-investigations.asc">
+  <meta name="pgp:recipient" content="blackthorn_investigations@proton.me">
   <!-- ✅ Social cards -->
   <meta property="og:site_name" content="BlackThorn Advisory">
   <meta property="og:type" content="website">
@@ -473,7 +474,19 @@
       <div class="rail-left">
         <h2 class="rail-title">Contact</h2>
         <p class="rail-copy">Send a brief. We reply within one business day.</p>
-        <small class="rail-note">PGP available on request.</small>
+        <div class="rail-note" style="display:grid; gap:6px;">
+          <small>PGP ready for secure briefs.</small>
+          <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
+            <a href="/pgp/blackthorn-investigations.asc" class="rail-mail" download>
+              Download public key
+            </a>
+            <button class="rail-copybtn" type="button" id="copy-fpr">Copy fingerprint</button>
+          </div>
+          <!-- Replace the placeholder below with your real fingerprint (spaces OK) -->
+          <small id="pgp-fpr" style="opacity:.75;">
+            Fingerprint: <code>cce4f9f2b64cf4dbb77dc4de99a9efbe8b5faf10</code>
+          </small>
+        </div>
       </div>
 
       <div class="rail-right" role="group" aria-label="Email address">
@@ -815,5 +828,20 @@
       }));
     })();
   </script>
+  <script>
+  // Copy PGP fingerprint
+    document.addEventListener('click', (e) => {
+      if (e.target && e.target.id === 'copy-fpr') {
+        const text = document.getElementById('pgp-fpr').innerText.replace('Fingerprint: ','').trim();
+        navigator.clipboard.writeText(text).then(() => {
+          const btn = e.target;
+          const orig = btn.textContent;
+          btn.textContent = 'Fingerprint copied';
+          setTimeout(()=> btn.textContent = orig, 1200);
+        });
+      }
+    });
+  </script>
+
 </body>
 </html>
