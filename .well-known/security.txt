@@ -1,0 +1,6 @@
+Contact: mailto:blackthorn_investigations@proton.me
+Encryption: https://blackthorn-investigations.com/pgp/blackthorn-investigations.asc
+Preferred-Languages: en, fr, nl
+Policy: https://blackthorn-investigations.com/#contact
+Canonical: https://blackthorn-investigations.com/.well-known/security.txt
+Expires: 2025-12-31T23:59:59Z
